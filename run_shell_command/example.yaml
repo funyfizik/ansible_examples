@@ -1,0 +1,15 @@
+--- #simple okaybook to install vim
+
+- name: "Example run shell command playbook"      #export ANSIBLE_HOST_KEY_CHECKING=false
+  hosts: "{{ env }}_server"
+  become: true
+  gather_facts: yes
+  
+  tasks:
+  - name: "check free disk space"
+    ansible.builtin.shell: "free -h"
+    register: tmp
+
+  - name: "Display output"
+    ansible.builtin.debug:
+      var: tmp.stdout_lines    

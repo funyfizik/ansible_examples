@@ -1,0 +1,12 @@
+--- #simple okaybook to delete vim
+
+- name: "Example delete vim playbook"      #export ANSIBLE_HOST_KEY_CHECKING=false
+  hosts: "{{ env }}_server"
+  become: true
+  gather_facts: yes
+  
+  tasks:
+  - name: "delete vim"
+    ansible.builtin.apt:
+      name: vim
+      state: absent

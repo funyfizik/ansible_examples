@@ -1,0 +1,18 @@
+---
+
+- name: "Example install postgresql and check service status playbook"      #export ANSIBLE_HOST_KEY_CHECKING=false
+  hosts: "{{ env }}_server"
+  become: true
+  gather_facts: yes
+  
+  tasks:
+  - name: "install postgresql"
+    ansible.builtin.apt:
+      update_cache: true
+      name: postgresql-14
+      state: latest
+
+  - name: "check service status"
+    ansible.builtin.service:
+     name: postgresql
+     state: started

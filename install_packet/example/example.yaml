@@ -1,0 +1,12 @@
+--- #simple okaybook to install vim
+
+- name: "Example playbook"      #export ANSIBLE_HOST_KEY_CHECKING=false
+  hosts: "{{ env }}_server"
+  become: true
+  gather_facts: yes
+  
+  tasks:
+  - name: "install vim"
+    ansible.builtin.apt:
+      name: vim
+      state: latest

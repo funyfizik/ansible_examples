@@ -1,0 +1,12 @@
+--- #simple okaybook to check service status
+
+- name: "Example check service playbook"      #export ANSIBLE_HOST_KEY_CHECKING=false
+  hosts: "{{ env }}_server"
+  become: true
+  gather_facts: yes
+  
+  tasks:
+  - name: "check service status"
+    ansible.builtin.service:
+     name: cron
+     state: started
